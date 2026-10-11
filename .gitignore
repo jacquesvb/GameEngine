@@ -1,0 +1,38 @@
+# Build output
+Build/
+bin/
+lib/
+cmake-build-*/
+
+# CMake (out-of-source leftovers)
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Compiled objects and binaries
+*.o
+*.obj
+*.lo
+*.slo
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*~
+.vs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependency managers
+conan/
+.vcpkg/
