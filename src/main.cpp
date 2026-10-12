@@ -1,13 +1,19 @@
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <GL/gl.h>
 #include <iostream>
 
 int main()
 {
+    glfwInitHint(GLFW_PLATFORM, GLFW_PLATFORM_X11);
+
     if (!glfwInit())
     {
         return -1;
     }
+
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     GLFWwindow* window = glfwCreateWindow(1280, 720, "GameDevelopmentProject", nullptr, nullptr);
 
@@ -22,9 +28,19 @@ int main()
 
     glfwMakeContextCurrent(window);
 
+    glewExperimental = GL_TRUE;
+
+    if (glewInit() != GLEW_OK)
+    {
+        glfwTerminate();
+        return -1;
+    }
+
     while (!glfwWindowShouldClose(window))
     {
+        glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
